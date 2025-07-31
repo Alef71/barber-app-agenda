@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda - Clube dos Barbas</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body class="dashboard-page">
+
+    <header class="main-header">
+        <div class="logo-container">
+            <!-- LOGO ATUALIZADO -->
+            <img src="img/barbearia.jpg" alt="Logo Clube dos Barbas" class="header-logo-img">
+            <h1>Clube dos Barbas</h1>
+        </div>
+        <div class="info-container">
+            <div id="user-info" class="info-box"><span>Administrador:</span><strong id="admin-name">...</strong></div>
+            <div class="info-box"><span>Data da Agenda:</span><input type="date" id="seletor-data"></div>
+            <div id="revenue-info" class="info-box"><span>Faturamento do Dia:</span><strong id="faturamento-dia">R$ 0,00</strong></div>
+            <div id="monthly-revenue-info" class="info-box"><span>Faturamento do Mês:</span><strong id="faturamento-mes">R$ 0,00</strong></div>
+            <div class="action-buttons">
+                <button id="valor-extra-btn" class="extra-value-btn">Adicionar Venda</button>
+                <button id="excluir-venda-btn" class="extra-value-btn delete-btn">Excluir Venda</button>
+            </div>
+            <button id="logout-button">Sair</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="agenda-container" class="agenda-grid">
+            <div class="agenda-coluna"><h3>Manhã</h3><div id="coluna-manha"></div></div>
+            <div class="agenda-coluna"><h3>Tarde</h3><div id="coluna-tarde"></div></div>
+        </div>
+    </main>
+    
+    <!-- MODAL DE AGENDAMENTO -->
+    <div id="modal-agendamento" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Novo Agendamento</h2>
+            <p>Horário: <strong id="modal-horario"></strong></p>
+            <form id="agendamento-form">
+                <div id="cliente-section">
+                    <div class="form-group"><label for="cliente-existente">Cliente</label><select id="cliente-existente"><option value="">-- Selecione --</option></select></div>
+                    <div id="novo-cliente-fields" style="display: none;"><div class="form-group"><label for="nome-cliente">Nome do Novo Cliente</label><input type="text" id="nome-cliente"></div><div class="form-group"><label for="telefone-cliente">Telefone</label><input type="text" id="telefone-cliente"></div></div>
+                </div>
+                <div class="form-group"><label for="servico">Serviço</label><select id="servico" required></select></div>
+                <div class="form-group"><label for="valor">Valor (R$)</label><input type="number" id="valor" step="0.01" required></div>
+                <button type="submit" class="submit-btn">Salvar Agendamento</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL DE EXCLUSÃO DE AGENDAMENTO -->
+    <div id="modal-exclusao" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h2>Confirmar Exclusão</h2>
+            <p>Tem certeza de que deseja excluir este registo?</p>
+            <div class="modal-actions">
+                <button id="cancelar-exclusao-btn" class="btn-secondary">Cancelar</button>
+                <button id="confirmar-exclusao-btn" class="btn-danger">Excluir</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PARA LISTAR E EXCLUIR VENDAS -->
+    <div id="modal-lista-vendas" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Excluir Venda do Dia</h2>
+            <div id="lista-vendas-container"></div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
